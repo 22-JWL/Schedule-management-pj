@@ -1,0 +1,61 @@
+<%-include('header')%>
+<br />
+<br />
+<br />
+<h1>Schedule Management</h1>
+
+<form action="/checkResult" method="POST">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="name"
+      placeholder="Enter your name"
+      name="name"
+    />
+  </div>
+  <div class="form-group">
+    <label for="school-id">School ID</label>
+    <input
+      type="number"
+      class="form-control"
+      id="school-id"
+      placeholder="Enter your school ID"
+      name="ID"
+    />
+  </div>
+  <div class="form-group">
+    <label for="attendance">Attendance</label>
+    <select class="form-control" id="attendance" name="attendance">
+      <option>참석</option>
+      <option>불참</option>
+    </select>
+  </div>
+  <div class="form-group" id="reason-group" style="display: none">
+    <label for="reason">Reason</label>
+    <input
+      type="text"
+      class="form-control"
+      id="reason"
+      placeholder="Enter the reason for absence"
+      name="reason"
+    />
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<script>
+  const attendanceSelect = document.getElementById("attendance");
+  const reasonGroup = document.getElementById("reason-group");
+
+  attendanceSelect.addEventListener("change", function () {
+    if (attendanceSelect.value === "Absent") {
+      reasonGroup.style.display = "block";
+    } else {
+      reasonGroup.style.display = "none";
+    }
+  });
+</script>
+
+<%-include('footer')%>
